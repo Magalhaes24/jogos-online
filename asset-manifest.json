@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/jogos-online/static/css/main.62ba5fa5.css",
+    "main.js": "/jogos-online/static/js/main.2a879c73.js",
+    "static/js/453.d8404be8.chunk.js": "/jogos-online/static/js/453.d8404be8.chunk.js",
+    "static/media/button.png": "/jogos-online/static/media/button.c892aacab7dfb955d6e8.png",
+    "static/media/logo.png": "/jogos-online/static/media/logo.c892aacab7dfb955d6e8.png",
+    "index.html": "/jogos-online/index.html",
+    "main.62ba5fa5.css.map": "/jogos-online/static/css/main.62ba5fa5.css.map",
+    "main.2a879c73.js.map": "/jogos-online/static/js/main.2a879c73.js.map",
+    "453.d8404be8.chunk.js.map": "/jogos-online/static/js/453.d8404be8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.62ba5fa5.css",
+    "static/js/main.2a879c73.js"
+  ]
+}
