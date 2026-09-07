@@ -51,33 +51,47 @@ def jump_lists(problems: list[dict], st: render.Style):
     ]
 
 
-def build(ascii_mode: bool = False, out: pathlib.Path | None = None) -> pathlib.Path:
+def build(ascii_mode: bool = False, out: pathlib.Path | None = None,
+          profile: str = "default") -> pathlib.Path:
     problems = db.load(only_verified=True)
     errors = schema.integrity(problems)
     if errors:
         raise SystemExit("Integridade falhou:\n  " + "\n  ".join(errors))
 
-    st = render.Style(ascii_mode)
-    title = TITLE + (" (ascii)" if ascii_mode else "")
-    book = epub.Book(title, CREATOR, DESC)
+    # o X4 não tem táctil: os links não são clicáveis e os emoji são um risco
+    if profile == "x4":
+        ascii_mode = True
+
+    st = render.Style(ascii_mode, profile)
+    # número de capítulo: no X4 é o endereço de cada problema
+    for i, prob in enumerate(problems, 1):
+        prob["_seq"] = i if profile == "x4" else None
+    sufixo = {"x4": " (X4)", "default": " (ascii)" if ascii_mode else ""}[profile]
+    book = epub.Book(TITLE + sufixo, CREATOR, DESC)
 
     # A ordem do spine e a ordem do índice têm de coincidir (EPUB NAV-011).
-    lists = jump_lists(problems, st)
     book.add("cover.xhtml", render.doc(TITLE, render.cover(len(problems), st)))
-    book.add("menu.xhtml", render.doc("Escolhe o teu desafio",
-                                      render.menu([(lbl, f) for lbl, f, *_ in lists], st)))
-    book.add("how-to.xhtml", render.doc("Como usar este livro", render.how_to(st)))
-    book.toc_entry("%s Escolhe o teu desafio" % st.s("dice"), "menu.xhtml")
-    book.toc_entry("Como usar este livro", "how-to.xhtml")
-
-    for _, fname, page_title, subtitle, selection in lists:
-        book.add(fname, render.doc(page_title,
-                                   render.jump_list(page_title, subtitle,
-                                                    render.shuffled(selection), st)))
-
-    book.add("daily.xhtml", render.doc("Desafio do dia",
-                                       render.daily(render.shuffled(problems, 4321), st)))
-    book.toc_entry("%s Desafio do dia" % st.s("sun"), "daily.xhtml")
+    if profile == "x4":
+        book.add("how-to.xhtml", render.doc("Como usar este livro",
+                                            render.guide_x4(problems, st)))
+        book.toc_entry("Como usar este livro", "how-to.xhtml")
+        book.add("daily.xhtml", render.doc("Desafio do dia",
+                                           render.daily_x4(render.shuffled(problems, 4321), st)))
+        book.toc_entry("%s Desafio do dia" % st.s("sun"), "daily.xhtml")
+    else:
+        lists = jump_lists(problems, st)
+        book.add("menu.xhtml", render.doc("Escolhe o teu desafio",
+                                          render.menu([(lbl, f) for lbl, f, *_ in lists], st)))
+        book.add("how-to.xhtml", render.doc("Como usar este livro", render.how_to(st)))
+        book.toc_entry("%s Escolhe o teu desafio" % st.s("dice"), "menu.xhtml")
+        book.toc_entry("Como usar este livro", "how-to.xhtml")
+        for _, fname, page_title, subtitle, selection in lists:
+            book.add(fname, render.doc(page_title,
+                                       render.jump_list(page_title, subtitle,
+                                                        render.shuffled(selection), st)))
+        book.add("daily.xhtml", render.doc("Desafio do dia",
+                                           render.daily(render.shuffled(problems, 4321), st)))
+        book.toc_entry("%s Desafio do dia" % st.s("sun"), "daily.xhtml")
 
     # corpo: divisória de categoria + um ficheiro por problema
     for cat, group in db.by_category(problems).items():
@@ -90,7 +104,13 @@ def build(ascii_mode: bool = False, out: pathlib.Path | None = None) -> pathlib.
                                        render.problem_pages(p, st)))
             children.append({"label": "%s · %s" % (p["id"], p["title"]),
                              "href": fname, "children": []})
-        book.toc_entry("%s %s" % (st.cat(cat), schema.NAME[cat]), dfile, children)
+        if profile == "x4":
+            # índice plano: o salto de capítulo do X4 percorre a lista em linha
+            book.toc_entry("%s %s" % (st.cat(cat), schema.NAME[cat]), dfile)
+            for c in children:
+                book.toc_entry(c["label"], c["href"])
+        else:
+            book.toc_entry("%s %s" % (st.cat(cat), schema.NAME[cat]), dfile, children)
 
     book.add("idx.xhtml", render.doc("Índices", render.index_home(st)))
     book.add("idx-id.xhtml", render.doc("Índice por número",
@@ -105,6 +125,14 @@ def build(ascii_mode: bool = False, out: pathlib.Path | None = None) -> pathlib.
         {"label": "Por conceito", "href": "idx-concept.xhtml", "children": []},
     ])
 
-    name = "pocket-problems-vol1%s.epub" % ("-ascii" if ascii_mode else "")
-    path = out or (OUTPUT / name)
-    return book.write(path, CSS.read_text(encoding="utf-8"))
+    nome = {"x4": "pocket-problems-vol1-x4.epub",
+            "default": "pocket-problems-vol1%s.epub" % ("-ascii" if ascii_mode else "")}[profile]
+    css = (ROOT / "templates" / ("style-x4.css" if profile == "x4" else "style.css"))
+    path = out or (OUTPUT / nome)
+    caminho = book.write(path, css.read_text(encoding="utf-8"))
+
+    if profile == "x4":
+        # o X4 salta no máximo 100 capítulos
+        n = len(book.spine)
+        assert n <= 100, "%d capítulos: o X4 só salta até 100" % n
+    return caminho

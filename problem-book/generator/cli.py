@@ -20,7 +20,7 @@ def cmd_check(_args) -> int:
 
 
 def cmd_build(args) -> int:
-    path = build_mod.build(ascii_mode=args.ascii)
+    path = build_mod.build(ascii_mode=args.ascii, profile=args.profile)
     size = path.stat().st_size
     print("%s  (%.1f KB)" % (path, size / 1024))
     return 0
@@ -75,6 +75,8 @@ def main(argv=None) -> int:
     b = sub.add_parser("build", help="gerar o EPUB")
     b.add_argument("--ascii", action="store_true",
                    help="substituir emoji por equivalentes de texto")
+    b.add_argument("--profile", default="default", choices=["default", "x4"],
+                   help="x4: Xteink X4 (4,3\", sem táctil, navegação por capítulos)")
     b.set_defaults(fn=cmd_build)
     v = sub.add_parser("verify", help="correr os scripts de verificação")
     v.add_argument("--id", default=None, help="verificar só um problema")

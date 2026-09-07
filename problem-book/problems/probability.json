@@ -57,7 +57,7 @@
     "hint_1": "A resposta não é 80%, nem 50%, nem 64%. Reformula a pergunta: de todas as vezes que este cenário acontece (escolher às cegas e sair CC), em que **fracção** delas a moeda era a viciada?",
     "hint_2": "Calcula duas quantidades: a probabilidade de escolher a justa **e** sair CC (0,5 × 0,5²), e a de escolher a viciada **e** sair CC (0,5 × 0,8²). A resposta é a segunda a dividir pela soma.",
     "answer": "**64/89 ≈ 71,9%**",
-    "solution": "| Moeda | P(escolher) | P(CC dada a moeda) | Produto |\n|---|---|---|---|\n| Justa | 0,5 | 0,5² = 0,25 | 0,125 |\n| Viciada | 0,5 | 0,8² = 0,64 | 0,320 |\n| | | **P(CC)** | **0,445** |\n\n```\nP(viciada | CC) = 0,320 / 0,445 = 320/445 = 64/89 ≈ 0,7191\n```",
+    "solution": "| Moeda | P(escolher) | P(CC dada a moeda) | Produto |\n|---|---|---|---|\n| Justa | 0,5 | 0,5² = 0,25 | 0,125 |\n| Viciada | 0,5 | 0,8² = 0,64 | 0,320 |\n| | | **P(CC)** | **0,445** |\n\n```\nP(viciada | CC)\n  = 0,320 / 0,445\n  = 320/445\n  = 64/89 ≈ 0,7191\n```",
     "why": "Bayes não é uma fórmula a decorar — é uma **tabela de mundos**. Escreve todas as maneiras de o que observaste acontecer, pesa cada uma pela sua probabilidade, e vê que fracção do total corresponde à tua hipótese.\n\nRepara também que a resposta (71,9%) fica *abaixo* de 80%: duas caras são evidência a favor da moeda viciada, mas evidência fraca — a moeda justa também as produz uma vez em quatro. **A força da evidência é a razão entre as verosimilhanças (0,64 / 0,25 ≈ 2,6), não o valor absoluto de nenhuma delas.**",
     "verification": {
       "method": "monte_carlo",

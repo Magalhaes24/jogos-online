@@ -37,7 +37,18 @@ def _styles(chunk: str) -> str:
     return chunk
 
 
-def _table(lines: list[str]) -> str:
+def _stacked(head: list[str], body: list[list[str]]) -> str:
+    """Tabela larga -> lista empilhada, para ecrãs estreitos."""
+    itens = []
+    for row in body:
+        rotulo = inline(row[0]) if row else ""
+        resto = " · ".join("%s: %s" % (inline(h), inline(c))
+                           for h, c in zip(head[1:], row[1:]) if c.strip())
+        itens.append("<li><strong>%s</strong><br/>%s</li>" % (rotulo, resto))
+    return '<ul class="stacked">%s</ul>' % "".join(itens)
+
+
+def _table(lines: list[str], max_cols: int | None = None) -> str:
     def cells(row: str) -> list[str]:
         row = row.strip()
         if row.startswith("|"):
@@ -47,6 +58,8 @@ def _table(lines: list[str]) -> str:
         return [c.strip() for c in row.split("|")]
 
     head, body = cells(lines[0]), [cells(r) for r in lines[2:]]
+    if max_cols is not None and len(head) > max_cols:
+        return _stacked(head, body)
     out = ['<table>', '<thead><tr>']
     out += ["<th>%s</th>" % inline(c) for c in head]
     out += ['</tr></thead>', '<tbody>']
@@ -56,8 +69,11 @@ def _table(lines: list[str]) -> str:
     return "".join(out)
 
 
-def render(text: str | None) -> str:
-    """Converte um bloco de markdown-lite em XHTML."""
+def render(text: str | None, max_cols: int | None = None) -> str:
+    """Converte um bloco de markdown-lite em XHTML.
+
+    `max_cols` limita a largura das tabelas: acima desse número de colunas,
+    a tabela é reescrita como lista empilhada (ecrãs estreitos)."""
     if not text:
         return ""
     lines = text.replace("\r\n", "\n").split("\n")
@@ -85,7 +101,7 @@ def render(text: str | None) -> str:
             while i < len(lines) and lines[i].strip().startswith("|"):
                 buf.append(lines[i])
                 i += 1
-            html.append(_table(buf))
+            html.append(_table(buf, max_cols))
             continue
 
         # lista não ordenada
