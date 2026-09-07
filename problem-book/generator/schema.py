@@ -90,9 +90,19 @@ def integrity(problems: list[dict]) -> list[str]:
         #    Só contam as palavras da resposta que NÃO aparecem no enunciado:
         #    vocabulário partilhado com o problema não é spoiler.
         if unique:
-            title_words = set(strip_md(p["title"]).lower().split())
-            problem_words = set(strip_md(p["problem"]).lower().split())
-            answer_words = {w for w in strip_md(p["answer"]).lower().split()
+            # normaliza plurais: «número» e «números» são a mesma palavra
+            def norm(texto):
+                out = set()
+                for bruto in strip_md(texto).lower().split():
+                    w = bruto.strip(".,;:!?()[]«»\u201c\u201d'\"-—–")
+                    if not w:
+                        continue
+                    out.add(w[:-1] if w.endswith("s") and len(w) > 4 else w)
+                return out
+
+            title_words = norm(p["title"])
+            problem_words = norm(p["problem"])
+            answer_words = {w for w in norm(p["answer"])
                             if len(w) > 3 and w not in STOPWORDS}
             leak = (answer_words - problem_words) & title_words
             if leak:

@@ -420,5 +420,105 @@
       "checked_at": "2026-09-07"
     },
     "estimated_time": "5-10"
+  },
+  {
+    "frustration": 3,
+    "aha_factor": 5,
+    "trap": false,
+    "classic": false,
+    "variation": "E para encontrar o **segundo maior**? *(n + ⌈log₂n⌉ − 2 comparações, e a ideia é guardar quem perdeu contra o campeão.)*",
+    "tags": [
+      "algoritmos",
+      "comparações"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "PRG-013",
+    "category": "programming",
+    "title": "O máximo e o mínimo",
+    "difficulty": 4,
+    "concept": "Complexidade algorítmica",
+    "problem": "Tens uma lista com **n** números e queres encontrar o **maior** e o **menor**.\n\nA forma óbvia percorre a lista uma vez, comparando cada elemento com o máximo actual e com o mínimo actual: **2n − 2** comparações.\n\nConsegues fazer melhor?\n\nQuantas comparações são precisas, no mínimo?",
+    "hint_1": "Cada elemento está a ser comparado duas vezes: uma com o máximo e outra com o mínimo. Haverá alguma forma de decidir, mais barato, que um elemento nem sequer pode ser o máximo?",
+    "hint_2": "Agrupa os elementos **dois a dois**. Depois de comparares os dois entre si, o menor dos dois não pode ser o máximo, e o maior não pode ser o mínimo.",
+    "answer": "**⌈3n/2⌉ − 2 comparações** — cerca de 25% menos.",
+    "solution": "**A ideia.** Processa os elementos aos pares. Para cada par gastas **3** comparações:\n\n1. compara os dois entre si → sabes qual é o menor e qual é o maior;\n2. o **menor** do par disputa o mínimo (1 comparação);\n3. o **maior** do par disputa o máximo (1 comparação).\n\nSão 3 comparações por cada 2 elementos, ou seja **1,5 por elemento**, em vez de 2.\n\n**A paridade trata-se no arranque**, não no fim: com `n` par, começa por comparar os dois primeiros; com `n` ímpar, arranca com o primeiro a ser máximo e mínimo ao mesmo tempo.\n\n| n | Ingénuo (2n−2) | Aos pares | Limite ⌈3n/2⌉−2 |\n|---|---|---|---|\n| 8 | 14 | **10** | 10 |\n| 100 | 198 | **148** | 148 |\n| 1000 | 1998 | **1498** | 1498 |\n\nO método atinge exactamente o limite — e prova-se que não existe algoritmo melhor.",
+    "why": "A poupança vem de **não desperdiçar informação**. Na versão ingénua, comparar `x` com o máximo não te diz nada sobre o mínimo. Ao comparar dois elementos entre si primeiro, cada um deles fica excluído de metade da corrida.\n\nÉ o mesmo princípio dos 25 cavalos: **eliminação por transitividade**. Se `a < b`, então `a` não precisa de disputar o máximo com ninguém.\n\nNota também o que isto **não** é: uma optimização de constante irrelevante. Passar de 2n para 1,5n é 25% do trabalho, e quando a comparação é cara — comparar ficheiros, registos de base de dados, chamadas de rede — essa constante é o custo real do sistema.",
+    "verification": {
+      "method": "brute_force",
+      "script": "checks/PRG-013.py",
+      "result": "pendente",
+      "checked_at": "2026-09-07"
+    },
+    "estimated_time": "10-20"
+  },
+  {
+    "frustration": 4,
+    "aha_factor": 5,
+    "trap": false,
+    "classic": true,
+    "variation": "E se houvesse **dois** valores repetidos? E se pudesses alterar a lista — há uma solução mais simples? *(Sim: usar o sinal de cada posição como marca de visita.)*",
+    "tags": [
+      "algoritmos",
+      "floyd",
+      "monstro"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "PRG-014",
+    "category": "programming",
+    "title": "O número a mais",
+    "difficulty": 5,
+    "concept": "Detecção de ciclos",
+    "problem": "Tens uma lista com **n + 1** números. Cada um está entre **1 e n**, portanto — pelo princípio do pombal — há pelo menos um repetido. Sabe-se que há exactamente um valor repetido (podendo aparecer várias vezes).\n\nEncontra esse valor com estas restrições:\n\n- **memória constante** — nada de conjuntos, dicionários ou contadores;\n- **não podes alterar a lista** — nem ordená-la;\n- tempo linear.\n\nComo fazes?",
+    "hint_1": "Não penses na lista como uma lista. Pensa nela como uma **função**: o índice `i` aponta para a posição `xs[i]`. Como os valores estão entre 1 e n, cada posição aponta para outra posição válida.",
+    "hint_2": "Se seguires essa função a partir de qualquer ponto, mais tarde ou mais cedo entras num **ciclo** — e o ciclo forma-se exactamente porque há duas posições diferentes a apontar para a mesma. Já ouviste falar da lebre e da tartaruga?",
+    "answer": "**Detecção de ciclo de Floyd** sobre a função `i → xs[i]`. O ponto de entrada do ciclo é o número repetido.",
+    "solution": "**Vê a lista como um grafo funcional:** de cada posição `i` segue-se para a posição `xs[i]`. Como todos os valores estão entre 1 e n, a caminhada nunca sai da lista — logo acaba por repetir posições, formando um ciclo.\n\nDuas posições distintas com o mesmo valor são duas setas a apontar para o mesmo sítio: é isso que fecha o ciclo, e a **entrada do ciclo** é o valor repetido.\n\n**Fase 1 — encontrar o encontro.** Um ponteiro avança uma casa de cada vez, outro avança duas. Acabam por se encontrar dentro do ciclo.\n\n**Fase 2 — encontrar a entrada.** Põe um dos ponteiros de volta ao início e avança ambos **uma casa de cada vez**. Encontram-se exactamente na entrada do ciclo — que é a resposta.\n\nDuas variáveis, nenhuma escrita na lista. Testado em 2000 casos aleatórios: sempre correcto, lista intacta.",
+    "why": "O truque é a **mudança de representação**: um problema de contagem transforma-se num problema de grafos, e aí existe uma ferramenta pronta.\n\nA alternativa óbvia — somar tudo e subtrair `n(n+1)/2` — funciona no caso simples, mas parte-se assim que o repetido aparecer três vezes, e transborda com inteiros de tamanho fixo. O ciclo de Floyd não tem nenhum destes problemas.\n\nE há aqui uma lição sobre restrições: «memória constante» e «não alterar a entrada» parecem arbitrárias, mas são exactamente as restrições de quem processa dados que não cabem na memória ou que pertencem a outra pessoa. São as restrições do mundo real.",
+    "verification": {
+      "method": "brute_force",
+      "script": "checks/PRG-014.py",
+      "result": "pendente",
+      "checked_at": "2026-09-07"
+    },
+    "estimated_time": "20+"
+  },
+  {
+    "frustration": 3,
+    "aha_factor": 4,
+    "trap": false,
+    "classic": false,
+    "variation": "O mesmo problema com `lista = lista + [x]` dentro de um ciclo, comparado com `lista.append(x)`. Qual é a diferença — e porquê?",
+    "tags": [
+      "algoritmos",
+      "strings"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "PRG-015",
+    "category": "programming",
+    "title": "A string que cresce",
+    "difficulty": 3,
+    "concept": "Complexidade algorítmica",
+    "problem": "Este código junta `n` pedaços de texto:\n\n```python\ns = \"\"\nfor pedaco in pedacos:\n    s = s + pedaco\n```\n\nE este faz o mesmo:\n\n```python\ns = \"\".join(pedacos)\n```\n\nCom `n = 100 000` pedaços de um caractere, um deles é **dramaticamente** mais lento.\n\nQual, e **quantas vezes** mais lento?",
+    "hint_1": "As strings são imutáveis. `s = s + pedaco` não acrescenta nada a `s` — cria uma string **nova**. Pergunta-te o que acontece ao conteúdo antigo.",
+    "hint_2": "Na iteração `k`, quantos caracteres é que a nova string tem de copiar? Soma isso para `k` de 1 a n.",
+    "answer": "A concatenação. Copia **n(n−1)/2** caracteres contra **n** do `join` — cerca de **50 000 vezes** mais trabalho para n = 100 000.",
+    "solution": "Cada `s = s + pedaco` aloca uma string nova e **copia tudo o que já lá estava**:\n\n| Iteração | Caracteres copiados |\n|---|---|\n| 1 | 0 |\n| 2 | 1 |\n| 3 | 2 |\n| n | n − 1 |\n\nTotal: `0 + 1 + 2 + … + (n−1)` = **n(n−1)/2** — quadrático.\n\nO `join` percorre a lista uma vez para calcular o tamanho final, aloca **uma** string e escreve cada caractere **uma só vez**: **n** cópias — linear.\n\n| n | Concatenação | join | Rácio |\n|---|---|---|---|\n| 10 | 45 | 10 | 4,5x |\n| 100 | 4 950 | 100 | 49,5x |\n| 1 000 | 499 500 | 1 000 | 499,5x |\n\nDez vezes mais dados custam **cem** vezes mais trabalho. Para n = 100 000, o rácio é cerca de 50 000.",
+    "why": "O sintoma é sempre o mesmo e é traiçoeiro: **o código funciona lindamente nos testes e morre em produção**. Com 100 pedaços ninguém nota; com 100 000, o processo parece bloqueado.\n\nA causa é geral: **construir uma estrutura imutável dentro de um ciclo** é quase sempre quadrático. Acontece com strings, com tuplos, com arrays de NumPy concatenados, com DataFrames a que se faz `append` linha a linha.\n\nA cura também é geral: acumula numa estrutura **mutável** (uma lista) e converte **uma vez** no fim.\n\n*(Nota honesta: o CPython tem uma optimização que, em certos casos, muta a string no sítio quando ela só tem uma referência — e às vezes a concatenação parece rápida. Não contes com isso: depende da implementação e desaparece assim que alguém guardar uma segunda referência.)*",
+    "verification": {
+      "method": "brute_force",
+      "script": "checks/PRG-015.py",
+      "result": "pendente",
+      "checked_at": "2026-09-07"
+    },
+    "estimated_time": "5-10"
   }
 ]

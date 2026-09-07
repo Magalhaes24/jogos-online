@@ -84,7 +84,10 @@ def main(argv=None) -> int:
     sub.add_parser("report", help="estado do banco").set_defaults(fn=cmd_report)
 
     args = parser.parse_args(argv)
-    return args.fn(args)
+    try:
+        return args.fn(args)
+    except BrokenPipeError:      # saída cortada por um pipe (| head)
+        return 0
 
 
 if __name__ == "__main__":
