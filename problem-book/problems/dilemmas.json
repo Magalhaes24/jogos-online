@@ -1,0 +1,150 @@
+[
+  {
+    "frustration": 2,
+    "aha_factor": 4,
+    "trap": false,
+    "classic": true,
+    "variation": null,
+    "tags": [
+      "ética",
+      "clássico"
+    ],
+    "has_unique_answer": false,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "answer": null,
+    "solution": null,
+    "id": "DIL-001",
+    "category": "dilemmas",
+    "title": "A alavanca",
+    "difficulty": 3,
+    "estimated_time": "5-10",
+    "concept": "Consequencialismo vs. deontologia",
+    "problem": "Um comboio desgovernado vai atropelar **cinco pessoas**.\n\nPodes accionar uma alavanca e desviá-lo para outra linha, onde está **uma pessoa**, que morrerá.\n\nNinguém te vê. Não há terceira opção. Não há tempo para avisar ninguém.\n\nAccionas a alavanca?",
+    "hint_1": "Se disseste sim: a tua razão é o número, ou o facto de não conheceres nenhum deles?",
+    "hint_2": "Se disseste não: a tua razão é não querer matar, ou não querer ser responsável? São coisas diferentes.",
+    "arguments_for": [
+      "Cinco vidas valem mais do que uma. Se as vidas valem todas o mesmo, a aritmética é trivial e recusar é escolher o pior resultado por conforto pessoal.",
+      "Não agir também é uma escolha, com consequências. A inacção não te devolve as mãos limpas — devolve-te cinco mortos.",
+      "Se todos nesta situação accionassem a alavanca, morreriam menos pessoas no mundo."
+    ],
+    "arguments_against": [
+      "Há uma diferença moral entre **deixar morrer** e **matar**. Ao puxar a alavanca, tornas-te a causa da morte de alguém que não estava em perigo.",
+      "A pessoa da segunda linha não consentiu em ser um recurso. Usá-la como meio para salvar outros trata-a como objecto.",
+      "Um mundo em que estranhos calculam o teu valor e agem sobre ti é pior do que um mundo em que ninguém decide quem morre — mesmo que morra mais gente."
+    ],
+    "variations": [
+      "Em vez da alavanca, tens de **empurrar** um homem grande de uma ponte para travar o comboio. Mesmos números. Fazes? *(A maioria das pessoas puxa a alavanca e não empurra. Se és uma delas: qual é a diferença moral, se o resultado é idêntico?)*",
+      "E se a pessoa sozinha for **alguém que conheces**?",
+      "E se as cinco pessoas estivessem na linha por terem ignorado um aviso, e a pessoa sozinha estivesse a trabalhar legalmente na via?",
+      "E se fosses **tu** a estar na segunda linha, e outra pessoa tivesse a alavanca — o que é que querias que ela fizesse?"
+    ],
+    "why": "Duas famílias éticas em colisão frontal. O **consequencialismo** avalia actos pelos resultados: cinco > um, fim. A **deontologia** avalia actos pelo tipo de acto: matar é proibido, mesmo com bons resultados.\n\nNenhuma das duas sobrevive intacta a todas as variações — e é por isso que o problema tem cinquenta anos e continua a ser discutido.\n\nO teste mais útil não é qual escolheste, mas se a tua resposta se mantém **coerente** da alavanca até à ponte.",
+    "verification": {
+      "method": "n/a",
+      "script": null,
+      "result": "argumentos equilibrados: revisão humana",
+      "checked_at": "2026-09-06"
+    }
+  },
+  {
+    "frustration": 1,
+    "aha_factor": 4,
+    "trap": false,
+    "classic": false,
+    "variation": null,
+    "tags": [
+      "ética",
+      "honestidade"
+    ],
+    "has_unique_answer": false,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "answer": null,
+    "solution": null,
+    "id": "DIL-002",
+    "category": "dilemmas",
+    "title": "A carteira",
+    "difficulty": 2,
+    "estimated_time": "2-5",
+    "concept": "Justiça vs. misericórdia",
+    "problem": "Encontras uma carteira na rua com **€500** em dinheiro e um cartão com morada, mas sem telefone nem email.\n\nPelo cartão percebes que o dono é claramente rico. Tu estás com o mês apertado — €500 resolviam-te um problema real.\n\nNinguém te viu.\n\nO que fazes?",
+    "hint_1": "Antes de virares: mudarias de resposta se a morada fosse de um bairro pobre? Se sim, o que é que isso diz sobre o critério que estás a usar?",
+    "hint_2": "Separa duas perguntas que estás a misturar: o que é correcto fazer, e o que farias de facto. As respostas podem não coincidir — e isso também é informação.",
+    "arguments_for": [
+      "**Devolver:** o dinheiro não é teu. A situação financeira do dono não altera a propriedade.",
+      "**Devolver:** «ele não precisa» é um critério que não aguenta ser generalizado — quem decide quanto é preciso?",
+      "**Devolver:** o custo de te tornares uma pessoa que fica com carteiras alheias é pago por ti, todos os dias, e é maior do que €500."
+    ],
+    "arguments_against": [
+      "**Ficar (ou hesitar):** a utilidade marginal de €500 é enormemente maior para ti do que para ele. O mundo fica melhor, em soma, se ficares.",
+      "**Ficar:** devolver tem um custo real — tempo, deslocação, e nenhuma garantia de reciprocidade.",
+      "**Ficar:** grande parte do impulso de devolver é medo de ser apanhado disfarçado de moral — e o enunciado retirou esse medo de propósito."
+    ],
+    "variations": [
+      "E se fossem **€20**? E se fossem **€50.000**?",
+      "E se, ao ires devolver, percebesses que o dono é uma pessoa que te fez mal no passado?",
+      "E se em vez de dinheiro fossem documentos sem valor para ti mas essenciais para ele?",
+      "E se **te vissem** a encontrar a carteira? *(Se esta última muda a tua resposta, a questão nunca foi moral.)*"
+    ],
+    "why": "A diferença entre **moral** e **reputação**.\n\nMuitas pessoas descobrem, ao responder à última variação, que estavam a modelar o custo social e não o acto. Isso não faz de ninguém má pessoa — mas é bom saber qual dos dois motores está a conduzir.",
+    "verification": {
+      "method": "n/a",
+      "script": null,
+      "result": "revisão humana",
+      "checked_at": "2026-09-06"
+    }
+  },
+  {
+    "frustration": 3,
+    "aha_factor": 4,
+    "trap": false,
+    "classic": false,
+    "variation": null,
+    "tags": [
+      "ética",
+      "amizade"
+    ],
+    "has_unique_answer": false,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "answer": null,
+    "solution": null,
+    "id": "DIL-003",
+    "category": "dilemmas",
+    "title": "O que sabes",
+    "difficulty": 4,
+    "estimated_time": "10-20",
+    "concept": "Lealdade vs. verdade",
+    "problem": "Descobres, por acaso e com certeza, que o teu melhor amigo está a trair a mulher.\n\nEla também é tua amiga, há tantos anos como ele.\n\nNenhum dos dois sabe que tu sabes.\n\nContas?",
+    "hint_1": "A tua resposta seria a mesma se soubesses que ela **suspeita** e te perguntasse directamente?",
+    "hint_2": "Existe uma terceira opção que não é nem contar nem calar. Consegues nomeá-la antes de virar a página?",
+    "arguments_for": [
+      "**Contar:** ela está a tomar decisões de vida com informação falsa. Guardar silêncio é participar no engano.",
+      "**Contar:** a amizade dela contigo é tão antiga como a dele. Escolher o silêncio já é escolher um lado — apenas de forma confortável para ti.",
+      "**Contar:** riscos concretos (saúde, dinheiro, futuro) não são teus para decidir esconder."
+    ],
+    "arguments_against": [
+      "**Não contar:** não é a tua vida, e não sabes o que existe entre eles. Casamentos têm acordos que não te foram explicados.",
+      "**Não contar:** a tua intervenção destrói uma relação com base num acto teu, não dela — e vais ser para sempre a pessoa que trouxe a notícia.",
+      "**Não contar:** podes estar errado sobre o significado do que viste, mesmo estando certo sobre o facto."
+    ],
+    "third_option": "Confrontar **o teu amigo** primeiro: dizer-lhe o que sabes e dar-lhe um prazo para contar ele próprio.\n\nPreserva a agência dele, mas não te torna cúmplice indefinido. Tem um custo: podes perder a amizade sem resolver nada, e ele pode simplesmente mentir.",
+    "variations": [
+      "E se ela estivesse **grávida**?",
+      "E se fosse **ela** a trair, e ele o teu melhor amigo? Mudou alguma coisa? *Porquê?*",
+      "E se te tivessem contado em confidência, em vez de teres visto?",
+      "E se ela te perguntasse a ti, directamente, a olhar-te nos olhos?"
+    ],
+    "why": "Dois deveres genuínos em conflito — lealdade e honestidade — sem hierarquia óbvia entre eles.\n\nRepara que a última variação muda o problema por completo: **calar** e **mentir** não são a mesma coisa, e muita gente que aceita o primeiro recusa o segundo. Encontrar exactamente onde é que essa linha passa em ti é o objectivo deste problema.",
+    "verification": {
+      "method": "n/a",
+      "script": null,
+      "result": "revisão humana",
+      "checked_at": "2026-09-06"
+    }
+  }
+]

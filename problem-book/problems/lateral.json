@@ -1,0 +1,98 @@
+[
+  {
+    "frustration": 3,
+    "aha_factor": 5,
+    "trap": false,
+    "classic": true,
+    "variation": "Mesma cena, mas desta vez o empregado serve-lhe a água e o homem sai **furioso**. Porquê?",
+    "tags": [
+      "clássico"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "LAT-001",
+    "category": "lateral",
+    "title": "O copo de água",
+    "difficulty": 3,
+    "estimated_time": "5-10",
+    "concept": "Pressuposto sobre a intenção",
+    "problem": "Um homem entra num restaurante e pede um copo de água.\n\nO empregado aponta-lhe uma arma.\n\nO homem diz «obrigado» e vai-se embora.\n\nPorquê?",
+    "hint_1": "Ninguém neste cenário é violento e ninguém está em perigo. O homem sai satisfeito, e o empregado ajudou-o. Pergunta o que ele **realmente** queria.",
+    "hint_2": "A água era um meio, não um fim. Havia outra forma de resolver o problema dele — e o empregado encontrou-a.",
+    "answer": "O homem tinha **soluços**.",
+    "solution": "Ele pediu água para tentar parar os soluços. O empregado percebeu e resolveu o problema de forma mais eficaz: um **susto**.\n\nOs soluços passaram, e o homem agradeceu — já não precisava da água.",
+    "why": "O enunciado convida-te a interpretar a arma como ameaça, porque associaste «arma» a «assalto» antes de teres qualquer prova. Mas o pressuposto verdadeiramente escondido é outro, e é mais interessante: **assumiste que o pedido dito era o pedido real**.\n\nAs pessoas raramente pedem o que querem — pedem o que julgam ser o caminho para o que querem. É o mesmo erro que se comete a receber requisitos de um cliente.",
+    "verification": {
+      "method": "manual",
+      "script": null,
+      "result": "teste de inevitabilidade: passa",
+      "checked_at": "2026-09-06"
+    }
+  },
+  {
+    "frustration": 3,
+    "aha_factor": 5,
+    "trap": false,
+    "classic": true,
+    "variation": "E se ele subisse a pé **todos** os dias, chuva ou sol, mas apenas às terças-feiras fosse directo ao 10.º?",
+    "tags": [
+      "clássico"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "LAT-002",
+    "category": "lateral",
+    "title": "O sétimo andar",
+    "difficulty": 3,
+    "estimated_time": "5-10",
+    "concept": "Pressuposto sobre a capacidade",
+    "problem": "Um homem vive no 10.º andar de um prédio.\n\nTodas as manhãs entra no elevador, carrega no botão do rés-do-chão e vai trabalhar.\n\nAo regressar, entra no elevador, carrega no botão do **7.º andar** e sobe os últimos três andares a pé.\n\nExcepto quando chove — nesses dias vai directo ao 10.º.\n\nPorquê?",
+    "hint_1": "Ele não escolhe parar no 7.º. Não consegue fazer melhor. O que é preciso para carregar no botão do 10.º que não é preciso para carregar no do 7.º?",
+    "hint_2": "Nos dias de chuva ele leva consigo uma coisa que não leva nos outros dias.",
+    "answer": "Ele é **baixo** e não alcança o botão do 10.º. Nos dias de chuva leva um **guarda-chuva**, e usa-o para carregar no botão.",
+    "solution": "O 7.º é o botão mais alto a que ele chega com a mão.\n\nTodos os elementos apontam para a mesma explicação e nenhum sobra: o botão mais alto alcançável, o esforço voluntário de subir três andares a pé, e a excepção exacta dos dias de chuva — que é a única pista que identifica o guarda-chuva.",
+    "why": "Num problema lateral bem construído, a **excepção é a chave**. A parte da história que parece um detalhe decorativo (a chuva) é o que distingue a solução verdadeira de dez soluções plausíveis.\n\nRegra operacional: quando estiveres encravado, pergunta *«que detalhe do enunciado é que a minha teoria ainda não explica?»* — e resolve esse.",
+    "verification": {
+      "method": "manual",
+      "script": null,
+      "result": "revisão humana",
+      "checked_at": "2026-09-06"
+    }
+  },
+  {
+    "frustration": 3,
+    "aha_factor": 5,
+    "trap": false,
+    "classic": true,
+    "variation": "Um homem vira um objecto ao contrário e uma pessoa morre. Não lhe tocou. O que era o objecto? *(pista: areia)*",
+    "tags": [
+      "clássico"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "LAT-003",
+    "category": "lateral",
+    "title": "O hotel",
+    "difficulty": 4,
+    "estimated_time": "10-20",
+    "concept": "Pressuposto sobre a escala",
+    "problem": "Uma mulher empurra o seu carro até um hotel.\n\nQuando lá chega, percebe que está falida.\n\nO que aconteceu?",
+    "hint_1": "Não há avaria, não há gasolina em falta, e não há dívidas. Repara que ela *empurra* o carro com a mão — não o conduz.",
+    "hint_2": "O carro é pequeno o suficiente para caber na palma da mão. E o hotel pertence a outra pessoa.",
+    "answer": "Ela está a jogar **Monopólio**.",
+    "solution": "A peça em forma de carro avança as casas que os dados mandaram e cai numa propriedade com hotel construído.\n\nA renda é superior ao dinheiro que ela tem: falência.",
+    "why": "Aqui não é uma palavra que engana — é a **escala**. «Carro», «hotel» e «falida» são todas literais; só o tamanho e o contexto é que não são o que assumiste.\n\nQuando um cenário parece impossível no mundo real, verifica se é possível num **mundo mais pequeno**: um jogo, um sonho, um ecrã, uma maquete, uma história dentro da história.",
+    "verification": {
+      "method": "manual",
+      "script": null,
+      "result": "revisão humana",
+      "checked_at": "2026-09-06"
+    }
+  }
+]

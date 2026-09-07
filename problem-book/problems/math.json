@@ -1,0 +1,101 @@
+[
+  {
+    "frustration": 4,
+    "aha_factor": 4,
+    "trap": true,
+    "classic": true,
+    "variation": "Um taco e uma bola custam €1,10. O taco custa **dez vezes** mais do que a bola. Quanto custa a bola?",
+    "tags": [
+      "armadilha",
+      "álgebra"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "MAT-001",
+    "category": "math",
+    "title": "O taco e a bola",
+    "difficulty": 2,
+    "estimated_time": "2-5",
+    "concept": "Equações lineares",
+    "problem": "Um taco e uma bola custam, juntos, **€1,10**.\n\nO taco custa **€1,00 mais** do que a bola.\n\nQuanto custa a bola?",
+    "hint_1": "A resposta que te veio à cabeça em dois segundos está provavelmente errada. Testa-a: se a bola custasse isso, quanto custaria o taco?",
+    "hint_2": "Chama `b` ao preço da bola. O taco é `b + 1`. Escreve a soma.",
+    "answer": "**€0,05** (5 cêntimos).",
+    "solution": "```\nb + (b + 1,00) = 1,10\n2b + 1,00      = 1,10\n2b             = 0,10\nb              = 0,05\n```\n\nConfirmação: bola €0,05, taco €1,05. Soma €1,10 ✔. Diferença €1,00 ✔.\n\nA resposta intuitiva (€0,10) falha o segundo teste: com bola a €0,10 o taco seria €1,10 e o total €1,20.",
+    "why": "O erro não é de cálculo — é de **substituição de pergunta**. O cérebro troca «quanto custa a bola?» por «que número é fácil de separar de 1,10?» e devolve 10 cêntimos.\n\nA defesa é mecânica e barata: **verifica sempre a resposta contra todas as condições do enunciado**, não apenas contra aquela que usaste.",
+    "verification": {
+      "method": "exact",
+      "script": "checks/MAT-001.py",
+      "result": "bola = 1/20 = 0.05 · taco = 21/20",
+      "checked_at": "2026-09-07"
+    }
+  },
+  {
+    "frustration": 2,
+    "aha_factor": 4,
+    "trap": false,
+    "classic": false,
+    "variation": "E a área do **hexágono** regular inscrito na mesma circunferência? Fica maior ou menor do que 200? Adivinha antes de calcular.",
+    "tags": [
+      "geometria",
+      "diagonal"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "MAT-002",
+    "category": "math",
+    "title": "O quadrado no círculo",
+    "difficulty": 3,
+    "estimated_time": "5-10",
+    "concept": "Geometria sem trigonometria",
+    "problem": "Um quadrado está inscrito numa circunferência de raio **10** (os quatro vértices tocam a circunferência).\n\nQual é a área do quadrado?",
+    "hint_1": "Não procures o lado. Procura o que a circunferência te dá directamente: liga dois vértices opostos do quadrado.",
+    "hint_2": "A diagonal do quadrado é o diâmetro. E a área de um quadrado pode escrever-se em função da diagonal, sem passar pelo lado.",
+    "answer": "**200**",
+    "solution": "1. A diagonal do quadrado passa pelo centro e liga dois pontos da circunferência: é o diâmetro, `d = 2 × 10 = 20`.\n2. Num quadrado de lado `L`, `d² = L² + L² = 2L²`, logo `L² = d²/2`.\n3. Área = `L² = 20² / 2 = 400 / 2 = 200`.\n\nVia lado, se insistires: `L = 20/√2 = 10√2`, e `L² = 200`. Mesmo sítio, mais trabalho.",
+    "why": "Guarda esta: **a área de um quadrado é metade do quadrado da diagonal**.\n\nEm geometria, resolver para o lado quando o problema te dá a diagonal é o desvio mais comum e mais caro. Pergunta sempre: *qual é a grandeza que o enunciado me dá de graça, e existe uma fórmula que a use directamente?*",
+    "verification": {
+      "method": "exact",
+      "script": "checks/MAT-002.py",
+      "result": "diagonal = 20 · L² = 200 · área = 200",
+      "checked_at": "2026-09-07"
+    }
+  },
+  {
+    "frustration": 3,
+    "aha_factor": 5,
+    "trap": false,
+    "classic": false,
+    "variation": "E em quantos zeros termina 1000!? E qual é o menor `n` tal que `n!` termina em exactamente 100 zeros — ou não existe nenhum?",
+    "tags": [
+      "factoriais",
+      "legendre"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "MAT-003",
+    "category": "math",
+    "title": "Os zeros do fim",
+    "difficulty": 4,
+    "estimated_time": "10-20",
+    "concept": "Teoria dos números elementar",
+    "problem": "Em quantos zeros termina o número **100!**\n\n(isto é, `100 × 99 × 98 × … × 2 × 1`)",
+    "hint_1": "Não calcules 100!. Um zero no fim de um número significa um factor 10. Quantos factores 10 há no produto?",
+    "hint_2": "10 = 2 × 5. Há muito mais factores 2 do que 5 no produto, portanto o número de zeros é o número de factores **5**. Mas atenção: o 25 contribui com dois.",
+    "answer": "**24 zeros**",
+    "solution": "Cada zero final vem de um par (2, 5). Os factores 2 são muito mais abundantes, portanto os 5 são o recurso limitante. Contam-se assim:\n\n| Contribuição | Cálculo | Factores 5 |\n|---|---|---|\n| Múltiplos de 5 | 100 ÷ 5 | 20 |\n| Múltiplos de 25 (dão um 5 extra) | 100 ÷ 25 | 4 |\n| Múltiplos de 125 | 100 ÷ 125 | 0 |\n| | **Total** | **24** |",
+    "why": "Esta é a **fórmula de Legendre**: o expoente de um primo `p` em `n!` é a soma de `n/p`, `n/p²`, `n/p³`, … (partes inteiras).\n\nMas o princípio geral vale muito para além dela: quando um resultado precisa de dois ingredientes, **conta só o escasso**. É o mesmo raciocínio de um estrangulamento numa linha de produção.",
+    "verification": {
+      "method": "brute_force",
+      "script": "checks/MAT-003.py",
+      "result": "Legendre: 24 · contagem directa em 100!: 24",
+      "checked_at": "2026-09-07"
+    }
+  }
+]

@@ -1,0 +1,105 @@
+[
+  {
+    "frustration": 3,
+    "aha_factor": 4,
+    "trap": false,
+    "classic": false,
+    "variation": "E se em vez de `x.append(...)` fosse `x.remove(i)`? O que imprime `x` no fim — e quantas iterações acontecem?",
+    "tags": [
+      "python",
+      "iteradores"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "PRG-001",
+    "category": "programming",
+    "title": "A lista que cresce",
+    "difficulty": 3,
+    "estimated_time": "5-10",
+    "language": "python",
+    "concept": "Iteração sobre estruturas mutáveis",
+    "code": "x = [1, 2, 3]\nfor i in x:\n    x.append(i + 3)\n    if len(x) > 6:\n        break\nprint(x)",
+    "problem": "O que imprime este código?\n\n```python\nx = [1, 2, 3]\nfor i in x:\n    x.append(i + 3)\n    if len(x) > 6:\n        break\nprint(x)\n```",
+    "hint_1": "O `for` em Python não trabalha sobre uma cópia da lista. Trabalha sobre um índice interno que avança na lista **real**, tal como ela está em cada momento.",
+    "hint_2": "Faz a tabela: em cada iteração escreve o índice actual, o valor de `i`, a lista depois do `append`, e o comprimento. Pára quando o comprimento passar de 6.",
+    "answer": "```\n[1, 2, 3, 4, 5, 6, 7]\n```",
+    "solution": "| Iteração | Índice | `i` | `x` depois do append | `len` | `> 6`? |\n|---|---|---|---|---|---|\n| 1 | 0 | 1 | `[1,2,3,4]` | 4 | não |\n| 2 | 1 | 2 | `[1,2,3,4,5]` | 5 | não |\n| 3 | 2 | 3 | `[1,2,3,4,5,6]` | 6 | não (6 não é > 6) |\n| 4 | 3 | 4 | `[1,2,3,4,5,6,7]` | 7 | **sim → break** |\n\nRepara na quarta iteração: `i` vale **4**, um elemento que não existia quando o ciclo começou. Sem o `break`, o ciclo nunca terminaria.",
+    "why": "Iterar sobre uma coleção que estás a modificar é um dos erros mais antigos da programação. Em Python, o iterador de lista guarda um índice, não um instantâneo: acrescentar durante o ciclo empurra o fim para longe, e remover faz o ciclo **saltar** elementos silenciosamente — que é o caso pior, porque não rebenta.\n\nRegra: itera sobre uma cópia (`for i in x[:]`) ou constrói uma lista nova. Nunca modifiques aquilo sobre que estás a iterar.",
+    "verification": {
+      "method": "execute",
+      "script": "checks/PRG-001.py",
+      "result": "saída real: [1, 2, 3, 4, 5, 6, 7] · esperado: [1, 2, 3, 4, 5, 6, 7]",
+      "checked_at": "2026-09-07"
+    }
+  },
+  {
+    "frustration": 4,
+    "aha_factor": 5,
+    "trap": true,
+    "classic": false,
+    "variation": "E se o valor por omissão fosse `lista=[]` mas a função fizesse `lista = lista + [item]` em vez de `lista.append(item)`? O que muda, e porquê?",
+    "tags": [
+      "python",
+      "pegadilha"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "PRG-002",
+    "category": "programming",
+    "title": "O argumento por omissão",
+    "difficulty": 4,
+    "estimated_time": "10-20",
+    "language": "python",
+    "concept": "Avaliação de defaults",
+    "code": "def adicionar(item, lista=[]):\n    lista.append(item)\n    return lista\n\nprint(adicionar(1))\nprint(adicionar(2))\nprint(adicionar(3, []))\nprint(adicionar(4))",
+    "problem": "O que imprime este código?\n\n```python\ndef adicionar(item, lista=[]):\n    lista.append(item)\n    return lista\n\nprint(adicionar(1))\nprint(adicionar(2))\nprint(adicionar(3, []))\nprint(adicionar(4))\n```",
+    "hint_1": "Pergunta-te *quando* é que a lista `[]` do cabeçalho é criada: em cada chamada, ou uma só vez?",
+    "hint_2": "O valor por omissão é avaliado **uma vez**, quando a função é definida, e fica guardado no próprio objecto função. As chamadas que não passam o argumento partilham todas essa mesma lista.",
+    "answer": "```\n[1]\n[1, 2]\n[3]\n[1, 2, 4]\n```",
+    "solution": "| Chamada | Usa que lista? | Estado depois | Imprime |\n|---|---|---|---|\n| `adicionar(1)` | a partilhada | `[1]` | `[1]` |\n| `adicionar(2)` | a partilhada | `[1, 2]` | `[1, 2]` |\n| `adicionar(3, [])` | uma lista nova | a partilhada não muda | `[3]` |\n| `adicionar(4)` | a partilhada | `[1, 2, 4]` | `[1, 2, 4]` |\n\nPodes ver o objecto directamente: `adicionar.__defaults__` devolve `([1, 2, 4],)`.",
+    "why": "O valor por omissão é avaliado **na definição**, não na chamada. Com valores imutáveis (`0`, `None`, `\"x\"`) isso não se nota. Com uma lista, um dicionário ou um conjunto, crias estado global escondido dentro da função — e o bug aparece semanas depois, em produção, com dados que se acumulam entre pedidos.\n\nA forma correcta:\n\n```python\ndef adicionar(item, lista=None):\n    if lista is None:\n        lista = []\n    lista.append(item)\n    return lista\n```",
+    "verification": {
+      "method": "execute",
+      "script": "checks/PRG-002.py",
+      "result": "esperado:   ['[1]', '[1, 2]', '[3]', '[1, 2, 4]']",
+      "checked_at": "2026-09-07"
+    }
+  },
+  {
+    "frustration": 4,
+    "aha_factor": 5,
+    "trap": false,
+    "classic": true,
+    "variation": "E para encontrar os **4** mais rápidos? *(Cuidado: a resposta não é 8.)* E se quisesses o **último** classificado — quantas corridas?",
+    "tags": [
+      "algoritmos",
+      "clássico"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "PRG-003",
+    "category": "programming",
+    "title": "Vinte e cinco cavalos",
+    "difficulty": 5,
+    "estimated_time": "20+",
+    "concept": "Torneios e limites inferiores",
+    "problem": "Tens **25 cavalos** e uma pista com **5 raias**.\n\nCada corrida põe 5 cavalos a correr e diz-te apenas a **ordem de chegada** entre eles — não há cronómetro, não há tempos.\n\nCada cavalo corre sempre à mesma velocidade e não há empates.\n\nQual é o **número mínimo de corridas** para determinares os **3 mais rápidos**, por ordem?",
+    "hint_1": "Começa pelas 5 corridas óbvias (todos os cavalos uma vez) e uma sexta com os 5 vencedores. Depois pergunta: dos 25, quantos ainda podem estar no pódio?",
+    "hint_2": "Depois da corrida dos vencedores, o 1.º lugar está decidido. Restam exactamente **5 candidatos** aos 2.º e 3.º lugares. Uma corrida chega para os separar.",
+    "answer": "**7 corridas.**",
+    "solution": "**Corridas 1–5:** divide os 25 em 5 grupos e corre cada grupo. Chama aos grupos A, B, C, D, E, e aos cavalos `A1 > A2 > A3 …` pela ordem de chegada. Os 4.º e 5.º de cada grupo estão eliminados (têm 3 cavalos à frente): sobram 15.\n\n**Corrida 6:** os cinco vencedores `A1, B1, C1, D1, E1`. Digamos que dá `A1 > B1 > C1 > D1 > E1`.\n\n- **`A1` é o mais rápido dos 25** — ganhou ao seu grupo e a todos os outros vencedores.\n- `D1` e `E1` têm pelo menos 3 cavalos à frente (`A1, B1, C1`): eliminados, e com eles os grupos D e E inteiros.\n- `C2` e `C3` têm pelo menos 3 à frente (`A1, B1, C1`): eliminados.\n- `B3` tem pelo menos 3 à frente (`A1, B1, B2`): eliminado.\n\nSobram exactamente **5 candidatos** aos 2.º e 3.º lugares: `A2, A3, B1, B2, C1`.\n\n**Corrida 7:** corre esses cinco. Os dois primeiros são o 2.º e o 3.º cavalos mais rápidos do conjunto. **Total: 7.**\n\n*Porque não 6:* depois das 6 primeiras corridas existem sempre 5 candidatos genuínos aos lugares 2 e 3, e nenhuma comparação anterior os ordena entre si. É preciso pelo menos mais uma corrida.",
+    "why": "Duas ideias, e ambas se transferem para código:\n\n1. **Eliminação por transitividade.** Não precisas de comparar tudo com tudo. Se `x < y` e `y < z`, a comparação `x` vs `z` é desperdício. É exactamente o que um torneio faz, e é por isso que encontrar o máximo custa `n−1` comparações e não `n²`.\n2. **Encontrar os `k` maiores é muito mais barato do que ordenar.** Ordenar 25 cavalos exigiria dezenas de corridas; encontrar os 3 primeiros exige 7. É a diferença entre `sorted(xs)[:k]` e `heapq.nlargest(k, xs)` — e a razão pela qual bases de dados têm uma optimização dedicada a `ORDER BY ... LIMIT k`.",
+    "verification": {
+      "method": "brute_force",
+      "script": "checks/PRG-003.py",
+      "result": "100000 torneios aleatórios · pódio correcto em todos · corridas usadas: [7]",
+      "checked_at": "2026-09-07"
+    }
+  }
+]

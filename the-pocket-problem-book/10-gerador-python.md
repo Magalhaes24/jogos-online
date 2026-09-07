@@ -22,17 +22,19 @@ problem-book/
 │
 ├── generator/
 │   ├── __init__.py
-│   ├── schema.py              # dataclasses + validação de integridade
-│   ├── db.py                  # carregar / gravar / consultar problems/
-│   ├── generate.py            # prompt #1 → GENERATED
-│   ├── solve.py               # prompt #2 → SOLVED
-│   ├── attack.py              # prompt #3 → CHECKED
-│   ├── verify.py              # prompt #4 + execução → VERIFIED
-│   ├── pipeline.py            # orquestra os quatro
-│   ├── render.py              # JSON → XHTML por bloco
-│   ├── epub.py                # XHTML → EPUB
-│   ├── pdf.py                 # opcional
-│   └── report.py              # estatísticas do banco
+│   ├── schema.py              # ✅ campos + as 10 regras de integridade
+│   ├── db.py                  # ✅ carregar / consultar problems/
+│   ├── mdlite.py              # ✅ markdown-lite → XHTML (sem dependências)
+│   ├── render.py              # ✅ JSON → XHTML por bloco
+│   ├── epub.py                # ✅ XHTML → EPUB (zipfile)
+│   ├── build.py               # ✅ orquestra o build
+│   ├── verify.py              # ✅ corre checks/ e confronta com o JSON
+│   ├── cli.py                 # ✅ ppb check | verify | build | report
+│   ├── generate.py            # ⏳ prompt #1 → GENERATED
+│   ├── solve.py               # ⏳ prompt #2 → SOLVED
+│   ├── attack.py              # ⏳ prompt #3 → CHECKED
+│   ├── pipeline.py            # ⏳ orquestra os quatro
+│   └── pdf.py                 # ⏳ opcional
 │
 ├── templates/
 │   ├── problem.html.j2        # os 9 blocos
@@ -206,14 +208,14 @@ e um EPUB que não se lê bem no dispositivo.
 
 ## Dependências
 
-Mínimas, deliberadamente:
+**Nenhuma**, até à Fase 4.
 
-```
-jinja2        # templates
-ebooklib      # EPUB (ou construir o zip à mão — o formato é simples)
-sympy         # verificação simbólica
-pyyaml        # concepts.yaml
-anthropic     # ou o cliente do modelo escolhido
-```
+O markdown, o XHTML e o EPUB são construídos à mão em cerca de 700 linhas de
+stdlib. O EPUB é um zip com quatro ficheiros de metadados; o `ebooklib` não
+acrescenta nada que compense uma dependência que se parte daqui a dois anos.
+A verificação usa `fractions.Fraction` em vez de `sympy` — para o que estes
+problemas precisam, aritmética exacta chega.
+
+Na Fase 4 entra uma só: o cliente do modelo escolhido (`anthropic`).
 
 Sem base de dados, sem framework, sem front-end. Ficheiros JSON e um script.

@@ -132,9 +132,16 @@ O build **falha** se alguma destas for violada:
 3. `verified == "VERIFIED"` para todos os problemas incluídos num EPUB.
 4. `has_unique_answer == false` ⟺ `category ∈ {dilemmas, what_would_you}`.
 5. `answer` existe ⟺ `has_unique_answer == true`.
-6. `title` não contém nenhuma palavra de `answer` (heurística anti-spoiler).
+6. `title` não revela a resposta. Heurística: só contam as palavras de `answer`
+   com mais de 3 letras que **não aparecem no enunciado** — vocabulário partilhado
+   com o problema («caixa», «moeda») não é spoiler; palavras novas são.
 7. `difficulty` e `estimated_time` são consistentes:
    `1→"<2"`, `2→"2-5"`, `3→"5-10"`, `4→"10-20"`, `5→"20+"`.
 8. `hint_1 != hint_2` e nenhuma das duas contém `answer` literalmente.
+   O bloco `why` é obrigatório em todas as categorias excepto `what_would_you`,
+   onde o seu lugar é ocupado por `common_mistake` + `approaches` (doc 04).
+   `dilemmas` exige `arguments_for` **e** `arguments_against`.
 9. `problem` não referencia outro problema por ID (auto-contenção).
-10. Categoria `programming` ⟹ `code` presente **e** executado no pipeline.
+10. `code` é obrigatório sempre que `verification.method == "execute"`.
+    A categoria `programming` também admite problemas de algoritmo sem snippet
+    (ex.: os 25 cavalos) — esses verificam-se por `brute_force`, não por execução.

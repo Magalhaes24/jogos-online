@@ -1,0 +1,101 @@
+[
+  {
+    "frustration": 2,
+    "aha_factor": 4,
+    "trap": false,
+    "classic": false,
+    "variation": "E se soubesses apenas que *pelo menos* uma etiqueta é verdadeira? Quantas respostas passam a existir?",
+    "tags": [
+      "verdades e mentiras",
+      "enumeração"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "LOG-001",
+    "category": "logic",
+    "title": "As três caixas",
+    "difficulty": 3,
+    "estimated_time": "5-10",
+    "concept": "Enumeração de mundos",
+    "problem": "Há três caixas: **A**, **B** e **C**. Exactamente uma contém ouro.\n\nCada caixa tem uma etiqueta:\n\n- **A:** «O ouro está nesta caixa.»\n- **B:** «O ouro não está nesta caixa.»\n- **C:** «O ouro não está na caixa A.»\n\nSabes que **exactamente uma** das três etiquetas diz a verdade.\n\nOnde está o ouro?",
+    "hint_1": "Não tentes deduzir a partir das etiquetas. Há só três hipóteses no mundo: o ouro está em A, em B, ou em C. Testa-as.",
+    "hint_2": "Para cada hipótese, percorre as três etiquetas e conta quantas ficam verdadeiras. Procuras a hipótese que dá exactamente uma.",
+    "answer": "O ouro está na caixa **B**.",
+    "solution": "| Hipótese | A: «está aqui» | B: «não está aqui» | C: «não está em A» | Verdadeiras |\n|---|---|---|---|---|\n| Ouro em **A** | V | V | F | **2** |\n| Ouro em **B** | F | F | V | **1** ✔ |\n| Ouro em **C** | F | V | V | **2** |\n\nSó a segunda linha dá exactamente uma etiqueta verdadeira.",
+    "why": "Quando um enunciado fixa *quantas* afirmações são verdadeiras, ele não está a dar-te factos — está a dar-te um **filtro**.\n\nNão deduzas para a frente a partir das afirmações; gera todos os mundos possíveis, aplica o filtro, e vê qual sobrevive. Com três, quatro ou cinco hipóteses, contar é sempre mais rápido e mais seguro do que raciocinar.",
+    "verification": {
+      "method": "exhaustive",
+      "script": "checks/LOG-001.py",
+      "result": "mundos possíveis: 3 · soluções: ['B']",
+      "checked_at": "2026-09-07"
+    }
+  },
+  {
+    "frustration": 3,
+    "aha_factor": 5,
+    "trap": false,
+    "classic": false,
+    "variation": "E se a pessoa do meio também tivesse dito «sim»? Que cores seriam possíveis então?",
+    "tags": [
+      "conhecimento comum",
+      "chapéus"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "LOG-002",
+    "category": "logic",
+    "title": "Os três chapéus",
+    "difficulty": 4,
+    "estimated_time": "10-20",
+    "concept": "Dedução a partir do silêncio",
+    "problem": "Três pessoas estão em fila indiana, todas viradas para a frente. A da retaguarda vê as duas da frente; a do meio vê só a da frente; a da frente não vê ninguém.\n\nExistem **cinco chapéus: três brancos e dois pretos**. Coloca-se um chapéu na cabeça de cada uma, ao acaso; os dois restantes são escondidos. Ninguém vê o seu próprio chapéu.\n\nPerguntam à da **retaguarda** se sabe a cor do seu chapéu. Responde: **«Não.»**\n\nPerguntam à do **meio**. Responde: **«Não.»**\n\nPerguntam à da **frente**. Responde: **«Sim.»**\n\nQue cor tem o chapéu da pessoa da frente — e como é que ela sabe?",
+    "hint_1": "A pessoa da frente não vê nada. Portanto a informação que ela usa não é visual: é o facto de as outras duas terem dito «não».",
+    "hint_2": "Só existem dois chapéus pretos. Em que situação é que a pessoa da retaguarda saberia imediatamente a cor do seu?",
+    "answer": "**Branco.**",
+    "solution": "1. Se a pessoa da retaguarda visse **dois pretos** à sua frente, saberia que o seu era branco (só há dois pretos). Como disse «não», **as duas da frente não são ambas pretas**.\n2. A do meio ouve isto e olha para a da frente. Se a da frente tivesse **preto**, então, pelo ponto 1, o chapéu da do meio teria de ser branco — e ela saberia. Como disse «não», **a da frente não tem preto**.\n3. Logo, a da frente tem **branco** — e chega lá exactamente por este raciocínio, sem ver nada.",
+    "why": "*Não saber é informação.*\n\nSempre que alguém com mais dados do que tu declara ignorância, elimina os cenários em que essa pessoa teria sabido. Uma cadeia de «nãos» é uma cadeia de eliminações — é o mesmo mecanismo por trás dos problemas dos prisioneiros, dos olhos azuis e da maioria dos puzzles de conhecimento comum.",
+    "verification": {
+      "method": "exhaustive",
+      "script": "checks/LOG-002.py",
+      "result": "mundos: 7 · após 1.º não: 6 · após 2.º não: 4 · cores possíveis à frente: ['B']",
+      "checked_at": "2026-09-07"
+    }
+  },
+  {
+    "frustration": 1,
+    "aha_factor": 3,
+    "trap": false,
+    "classic": false,
+    "variation": "Retira a pista 2. Quantas soluções ficam?",
+    "tags": [
+      "grelha",
+      "dedução"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "LOG-003",
+    "category": "logic",
+    "title": "Três amigos, três pisos",
+    "difficulty": 2,
+    "estimated_time": "2-5",
+    "concept": "Grelhas de dedução",
+    "problem": "A Ana, o Bruno e a Clara vivem no mesmo prédio, cada um num piso diferente (1, 2 ou 3), e cada um bebe uma bebida diferente: chá, café ou água.\n\n- Quem bebe café vive num piso **acima** do da Ana.\n- O Bruno **não** vive no piso 3.\n- A Clara bebe chá.\n\nQuem bebe água, e em que piso vive cada um?",
+    "hint_1": "Começa pelas bebidas. Duas das três pistas dizem-te alguma coisa sobre quem *não* bebe café.",
+    "hint_2": "Depois de saberes quem bebe café, a primeira pista força um piso mínimo para essa pessoa. A segunda pista fecha tudo.",
+    "answer": "A **Ana** bebe água, no piso **1**. O Bruno bebe café, no piso **2**. A Clara bebe chá, no piso **3**.",
+    "solution": "1. A Clara bebe chá (pista 3).\n2. A Ana não bebe café, porque quem bebe café vive acima dela (pista 1) e ninguém vive acima de si próprio. Logo o café é do **Bruno**, e a **Ana** fica com a água.\n3. Pista 1: piso(Bruno) > piso(Ana), logo piso(Bruno) é 2 ou 3.\n4. Pista 2: Bruno não é 3, logo **Bruno = 2**, e portanto **Ana = 1** e **Clara = 3**.",
+    "why": "Numa grelha de dedução, as pistas mais úteis quase nunca são as afirmativas («a Clara bebe chá»). São as **comparativas** («acima de»), porque eliminam um extremo: «X está acima de Y» diz-te de imediato que X não é o piso mais baixo e que Y não é o mais alto.\n\nAtaca primeiro essas.",
+    "verification": {
+      "method": "exhaustive",
+      "script": "checks/LOG-003.py",
+      "result": "combinações: 36 · soluções: 1 [({'Ana': 'água', 'Bruno': 'café', 'Clara': 'chá'}, {'Ana': 1, 'Bruno': 2, 'Clara': 3})]",
+      "checked_at": "2026-09-07"
+    }
+  }
+]

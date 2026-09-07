@@ -17,7 +17,7 @@ visual e sistema de IDs.
 
 ---
 
-## FASE 2 — Base inicial e teste no dispositivo
+## FASE 2 — Base inicial e teste no dispositivo ✅ *(código feito; falta a semana de leitura no X4)*
 
 **Objectivo:** descobrir os problemas de formato **antes** de haver 200 problemas para
 reformatar.
@@ -36,7 +36,7 @@ teres pensado "isto lê-se mal".
 
 ---
 
-## FASE 3 — Verificadores primeiro
+## FASE 3 — Verificadores primeiro ✅ *(14 dos 24 verificados por script; os outros 10 são `manual`/`n/a` por natureza)*
 
 **Objectivo:** saber rejeitar antes de saber gerar.
 

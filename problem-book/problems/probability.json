@@ -1,0 +1,102 @@
+[
+  {
+    "frustration": 1,
+    "aha_factor": 3,
+    "trap": false,
+    "classic": false,
+    "variation": "E com **quatro** lançamentos, pelo menos duas caras? Atenção: a simetria acima deixa de funcionar. Porquê?",
+    "tags": [
+      "moedas",
+      "contagem"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "PRB-001",
+    "category": "probability",
+    "title": "Três lançamentos",
+    "difficulty": 2,
+    "estimated_time": "2-5",
+    "concept": "Contagem de casos",
+    "problem": "Lança-se uma moeda equilibrada **três vezes**.\n\nQual é a probabilidade de sair **pelo menos duas caras**?",
+    "hint_1": "Só há oito resultados possíveis. Escreve-os todos.",
+    "hint_2": "«Pelo menos duas» significa exactamente duas **ou** três. Conta as duas famílias em separado.",
+    "answer": "**1/2** (50%)",
+    "solution": "Os 8 resultados equiprováveis (C = cara, K = coroa):\n\n```\nCCC ✔   CCK ✔   CKC ✔   KCC ✔\nCKK     KCK     KKC     KKK\n```\n\nQuatro têm duas ou mais caras: `4/8 = 1/2`.\n\nFormalmente: `C(3,2)·(1/2)³ + C(3,3)·(1/2)³ = 3/8 + 1/8 = 4/8`.",
+    "why": "Com 8, 16 ou 36 casos equiprováveis, **enumerar não é um atalho de principiante — é o método**. Fórmulas são para quando o espaço não cabe numa folha.\n\nE há aqui uma simetria que dá a resposta em três segundos: com um número ímpar de lançamentos, «mais caras do que coroas» e «mais coroas do que caras» são simétricos e cobrem todos os casos, logo cada um vale exactamente 1/2.",
+    "verification": {
+      "method": "monte_carlo",
+      "script": "checks/PRB-001.py",
+      "result": "exacto: 1/2 · simulado: 0.49972 (1000000 ensaios)",
+      "checked_at": "2026-09-07"
+    }
+  },
+  {
+    "frustration": 3,
+    "aha_factor": 5,
+    "trap": true,
+    "classic": true,
+    "variation": "E se saíssem **três** caras? E se saísse cara-coroa — ficarias com que probabilidade?",
+    "tags": [
+      "bayes",
+      "condicional",
+      "moedas"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "PRB-002",
+    "category": "probability",
+    "title": "As duas moedas",
+    "difficulty": 4,
+    "estimated_time": "10-20",
+    "concept": "Teorema de Bayes",
+    "problem": "Tens duas moedas. Uma é **equilibrada**. A outra sai **cara 80%** das vezes.\n\nEscolhes uma ao acaso, sem olhar, e lanças **duas vezes**. Saem **duas caras**.\n\nQual é a probabilidade de teres escolhido a moeda viciada?",
+    "hint_1": "A resposta não é 80%, nem 50%, nem 64%. Reformula a pergunta: de todas as vezes que este cenário acontece (escolher às cegas e sair CC), em que **fracção** delas a moeda era a viciada?",
+    "hint_2": "Calcula duas quantidades: a probabilidade de escolher a justa **e** sair CC (0,5 × 0,5²), e a de escolher a viciada **e** sair CC (0,5 × 0,8²). A resposta é a segunda a dividir pela soma.",
+    "answer": "**64/89 ≈ 71,9%**",
+    "solution": "| Moeda | P(escolher) | P(CC dada a moeda) | Produto |\n|---|---|---|---|\n| Justa | 0,5 | 0,5² = 0,25 | 0,125 |\n| Viciada | 0,5 | 0,8² = 0,64 | 0,320 |\n| | | **P(CC)** | **0,445** |\n\n```\nP(viciada | CC) = 0,320 / 0,445 = 320/445 = 64/89 ≈ 0,7191\n```",
+    "why": "Bayes não é uma fórmula a decorar — é uma **tabela de mundos**. Escreve todas as maneiras de o que observaste acontecer, pesa cada uma pela sua probabilidade, e vê que fracção do total corresponde à tua hipótese.\n\nRepara também que a resposta (71,9%) fica *abaixo* de 80%: duas caras são evidência a favor da moeda viciada, mas evidência fraca — a moeda justa também as produz uma vez em quatro. **A força da evidência é a razão entre as verosimilhanças (0,64 / 0,25 ≈ 2,6), não o valor absoluto de nenhuma delas.**",
+    "verification": {
+      "method": "monte_carlo",
+      "script": "checks/PRB-002.py",
+      "result": "exacto: 64/89 = 0.7191 · simulado: 0.71938 (889556 casos em 2000000 ensaios)",
+      "checked_at": "2026-09-07"
+    }
+  },
+  {
+    "frustration": 5,
+    "aha_factor": 5,
+    "trap": true,
+    "classic": true,
+    "variation": "E se o apresentador **não** soubesse onde está o carro e tivesse aberto a porta 3 por sorte, calhando ser uma cabra? Trocar continua a valer a pena? *(A resposta muda — e é por isso que este problema causa tanta discussão.)*",
+    "tags": [
+      "monty hall",
+      "condicional"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "PRB-003",
+    "category": "probability",
+    "title": "As três portas",
+    "difficulty": 3,
+    "estimated_time": "5-10",
+    "concept": "Probabilidade condicional",
+    "problem": "Num concurso há **três portas**. Atrás de uma está um carro; atrás das outras duas, cabras. Escolhes a porta 1.\n\nO apresentador, que **sabe** onde está o carro, abre sempre uma porta que não escolheste e que tem uma cabra. Abre a porta 3: cabra.\n\nOferece-te trocar para a porta 2.\n\nTrocar aumenta as tuas hipóteses?",
+    "hint_1": "A informação decisiva não é a porta que se abriu. É que o apresentador **sabia** onde estava o carro, e por isso nunca poderia ter aberto a porta do carro.",
+    "hint_2": "Qual era a probabilidade de teres acertado à primeira? Essa probabilidade mudou depois de o apresentador abrir uma porta que ele *tinha* de conseguir abrir de qualquer maneira?",
+    "answer": "**Sim. Trocar dá 2/3; ficar dá 1/3.**",
+    "solution": "A tua escolha inicial acerta com probabilidade 1/3. Nada do que o apresentador faz altera isso, porque ele consegue sempre abrir uma porta com cabra, aconteça o que acontecer.\n\n| | Prob. inicial | Se ficares | Se trocares |\n|---|---|---|---|\n| Escolheste o carro | 1/3 | ganhas | perdes |\n| Escolheste uma cabra | 2/3 | perdes | **ganhas** |\n\nNos 2/3 dos casos em que começaste numa cabra, o apresentador é **obrigado** a abrir a outra cabra — e trocar leva-te ao carro. Trocar ganha em 2 de 3 jogos.",
+    "why": "O erro é tratar a acção do apresentador como um sorteio. Não é: é uma escolha **condicionada** ao que ele sabe. Sempre que alguém informado filtra as opções que te mostra, essa filtragem transporta informação — e a informação vai toda para a porta que ele **não** abriu.\n\nTeste decisivo: imagina **100 portas**. Escolhes uma (1% de hipóteses). O apresentador abre 98 com cabras. Trocas para a única que sobra? Agora é evidente.",
+    "verification": {
+      "method": "monte_carlo",
+      "script": "checks/PRB-003.py",
+      "result": "trocar: 0.6662 · ficar: 0.3338 (1000000 jogos)",
+      "checked_at": "2026-09-07"
+    }
+  }
+]

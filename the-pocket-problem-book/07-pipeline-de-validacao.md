@@ -73,7 +73,7 @@ Sempre que a categoria o permitir, um script decide. Ver a tabela seguinte.
 |---|---|---|
 | 🧠 Lógica | `exhaustive` | Enumera **todos** os mundos possíveis, aplica as restrições, conta as soluções. Aceita **se e só se** houver exactamente uma. |
 | 🎲 Probabilidade | `monte_carlo` | Simula ≥ 10⁶ ensaios. Aceita se \|simulado − analítico\| < 0,5%. |
-| 🔢 Matemática | `symbolic` / `brute_force` | `sympy` para álgebra e geometria; força bruta para combinatória e teoria dos números. |
+| 🔢 Matemática | `exact` / `brute_force` | `fractions.Fraction` para álgebra e geometria (aritmética exacta, sem vírgula flutuante e sem dependências); força bruta para combinatória e teoria dos números. |
 | 💻 Programação | `execute` | Corre o snippet num subprocesso isolado (timeout 5s, sem rede) e compara a saída real com `answer`. |
 | 🕵️ Enigmas | `manual` | Revisão humana. Sem prova formal possível. |
 | 🌀 Lateral | `manual` | Revisão humana + o teste de inevitabilidade (ver [`13`](13-controlo-de-qualidade.md)). |

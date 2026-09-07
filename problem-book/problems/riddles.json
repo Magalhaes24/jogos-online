@@ -1,0 +1,100 @@
+[
+  {
+    "frustration": 1,
+    "aha_factor": 4,
+    "trap": false,
+    "classic": false,
+    "variation": "Quanto mais secas, mais molhada fica. O que é? *(pista: casa de banho)*",
+    "tags": [
+      "adivinha"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "ENI-001",
+    "category": "riddles",
+    "title": "O que cresce ao encolher",
+    "difficulty": 2,
+    "estimated_time": "2-5",
+    "concept": "Definição por ausência",
+    "problem": "Quanto mais lhe tiras, maior fica.\n\nO que é?",
+    "hint_1": "Estás a assumir que «tirar» reduz. Pensa em algo cuja identidade *é* a ausência de matéria.",
+    "hint_2": "Está no chão. Provavelmente já caíste num.",
+    "answer": "Um **buraco**.",
+    "solution": "Um buraco não é feito de material — é definido pelo material que **falta**. Tirar terra de um buraco é acrescentar buraco.\n\nA palavra «tirar» só significa «diminuir» quando o objecto é positivo; um buraco é um objecto negativo.",
+    "why": "Muitos enigmas funcionam com uma **assimetria de sinal**: assumes que a operação e o objecto têm a mesma polaridade.\n\nQuando um enunciado parece auto-contraditório, pergunta se algum dos substantivos é definido por ausência — buraco, dívida, silêncio, sombra, vazio.",
+    "verification": {
+      "method": "manual",
+      "script": null,
+      "result": "revisão humana",
+      "checked_at": "2026-09-06"
+    }
+  },
+  {
+    "frustration": 3,
+    "aha_factor": 5,
+    "trap": false,
+    "classic": false,
+    "variation": "Se começares em `2` em vez de `1`, a sequência comporta-se de forma diferente? E existe algum termo que se gere a si próprio?",
+    "tags": [
+      "sequência",
+      "look-and-say"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "ENI-002",
+    "category": "riddles",
+    "title": "A sequência que se lê",
+    "difficulty": 3,
+    "estimated_time": "5-10",
+    "concept": "Sequências auto-descritivas",
+    "problem": "Qual é o próximo termo?\n\n```\n1\n11\n21\n1211\n111221\n?\n```",
+    "hint_1": "Não é aritmética. Nenhuma soma, diferença ou produto liga estes números. Não tentes calcular — tenta **dizer em voz alta**.",
+    "hint_2": "Cada linha descreve a linha anterior. Lê a linha `21` em voz alta olhando para a linha `11`.",
+    "answer": "**312211**",
+    "solution": "Cada termo lê o anterior em voz alta, contando repetições:\n\n| Termo | Lê-se | Gera |\n|---|---|---|\n| `1` | «um 1» | `11` |\n| `11` | «dois 1» | `21` |\n| `21` | «um 2, um 1» | `1211` |\n| `1211` | «um 1, um 2, dois 1» | `111221` |\n| `111221` | «três 1, dois 2, um 1» | **`312211`** |",
+    "why": "Quando uma sequência resiste a toda a aritmética, o operador provavelmente não é numérico: é **tipográfico ou linguístico**. A sequência olha para si própria em vez de para os valores.\n\nÉ a chamada *look-and-say*, e a mesma família inclui sequências definidas pelo número de letras do nome do número, ou pela forma dos dígitos.",
+    "verification": {
+      "method": "brute_force",
+      "script": "checks/ENI-002.py",
+      "result": "1 -> 11 -> 21 -> 1211 -> 111221 -> 312211",
+      "checked_at": "2026-09-07"
+    }
+  },
+  {
+    "frustration": 2,
+    "aha_factor": 4,
+    "trap": false,
+    "classic": false,
+    "variation": "E se fossem exactamente **duas** as afirmações verdadeiras?",
+    "tags": [
+      "dedução",
+      "mini-mistério"
+    ],
+    "has_unique_answer": true,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "id": "ENI-003",
+    "category": "riddles",
+    "title": "O vidro partido",
+    "difficulty": 3,
+    "estimated_time": "5-10",
+    "concept": "Verdades e mentiras",
+    "problem": "Alguém partiu a janela da escola. Foi o Rui, a Sara ou o Tomás — e apenas um deles.\n\n- **Rui:** «Não fui eu.»\n- **Sara:** «Foi o Tomás.»\n- **Tomás:** «A Sara está a mentir.»\n\nSabe-se que **exactamente uma** destas três afirmações é verdadeira.\n\nQuem partiu a janela?",
+    "hint_1": "Não penses em quem parece mais suspeito. Assume um culpado de cada vez e vê se o número de afirmações verdadeiras bate certo.",
+    "hint_2": "Repara que as afirmações da Sara e do Tomás são opostas: uma delas é sempre verdadeira. Portanto a do Rui tem de ser falsa.",
+    "answer": "Foi o **Rui**.",
+    "solution": "| Culpado | Rui: «não fui» | Sara: «foi o Tomás» | Tomás: «Sara mente» | Verdadeiras |\n|---|---|---|---|---|\n| **Rui** | F | F | V | **1** ✔ |\n| Sara | V | F | V | **2** |\n| Tomás | V | V | F | **2** |\n\nAtalho: Sara e Tomás contradizem-se, logo exactamente uma das duas é verdadeira. Como só pode haver uma verdadeira no total, a do Rui é falsa — e «não fui eu» falso significa que foi ele.",
+    "why": "Procura sempre **pares contraditórios**. Se duas afirmações se negam mutuamente, sabes que contribuem exactamente uma verdade, sem precisares de saber qual.\n\nIsso consome a quota de verdades e resolve o resto do problema de graça.",
+    "verification": {
+      "method": "exhaustive",
+      "script": "checks/ENI-003.py",
+      "result": "mundos: 3 · soluções: ['Rui']",
+      "checked_at": "2026-09-07"
+    }
+  }
+]

@@ -1,0 +1,158 @@
+[
+  {
+    "frustration": 2,
+    "aha_factor": 4,
+    "trap": false,
+    "classic": false,
+    "variation": "Mesmo problema, mas **não podes escrever uma única linha de código**. Muda a resposta? *(Se muda muito, o teu plano dependia mais das tuas ferramentas do que do mercado.)*",
+    "tags": [
+      "negócio",
+      "estratégia"
+    ],
+    "has_unique_answer": false,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "answer": null,
+    "solution": null,
+    "id": "WWY-001",
+    "category": "what_would_you",
+    "title": "Mil euros e três meses",
+    "difficulty": 4,
+    "estimated_time": "10-20",
+    "concept": "Restrições e alavancagem",
+    "problem": "Tens **€1.000** e **três meses**.\n\n- Não podes pedir dinheiro emprestado nem levantar investimento.\n- Sabes programar, mas não tens audiência nenhuma.\n- Ao fim dos três meses, o negócio tem de dar dinheiro — não «potencial».\n\nO que farias?",
+    "hint_1": "Escreve o teu plano em cinco linhas antes de virar a página: o que vendes, a quem, e como é que a primeira pessoa te encontra.",
+    "hint_2": "Se o teu plano contém a palavra «lançar», pergunta-te quando é que o primeiro cliente paga. Se a resposta for «depois de estar pronto», tens um problema de calendário, não de produto.",
+    "framing": "**A restrição verdadeira não é o dinheiro. É a audiência.** €1.000 chegam para servidores, domínio e ferramentas durante três meses com folga. O que não tens é distribuição — e é isso que o plano tem de resolver primeiro.",
+    "approaches": [
+      {
+        "name": "A — Serviços primeiro, produto depois",
+        "body": "Vender trabalho de programação a um nicho estreito (ex.: automações para clínicas dentárias). Receita na semana 2, e cada cliente é uma entrevista paga sobre os problemas do sector. Ao fim de três meses, tens dinheiro e sabes qual é o produto.\n\n*Custo:* troca-se tempo por dinheiro; não escala. *É o caminho com maior probabilidade de terminar com receita.*"
+      },
+      {
+        "name": "B — Parasitar uma plataforma existente",
+        "body": "Construir onde já existe procura com intenção de compra: uma extensão, um plugin, um add-on de marketplace. A audiência é da plataforma; tu só precisas de resolver uma dor concreta e ficar bem posicionado na pesquisa interna.\n\n*Custo:* dependes de regras que não controlas. *É o caminho com melhor rácio esforço/alcance.*"
+      },
+      {
+        "name": "C — Vender antes de construir",
+        "body": "Escolher um problema, escrever a página de vendas, e tentar cobrar **na primeira semana**, antes de existir produto. Zero vendas em duas semanas = muda de problema, com €1.000 ainda intactos.\n\n*Custo:* desconfortável. *É o caminho que maximiza o que aprendes por euro gasto.*"
+      },
+      {
+        "name": "D — Arbitragem de trabalho aborrecido",
+        "body": "Encontrar uma tarefa manual, repetitiva e cara que alguém já paga a humanos, e vender o resultado — não o software. Cobras pelo output, não por licenças.\n\n*Custo:* muito trabalho manual no início. *É o caminho que valida a disponibilidade para pagar mais depressa.*"
+      }
+    ],
+    "common_mistake": "Gastar os três meses a construir e o dia 89 a descobrir se alguém quer. Com três meses de prazo, a única sequência que faz sentido é **vender → construir → entregar**, e não o contrário.\n\nO segundo erro mais comum é gastar os €1.000: neste cenário, dinheiro gasto é quase sempre dinheiro que substituiu uma conversa com um cliente.",
+    "verification": {
+      "method": "n/a",
+      "script": null,
+      "result": "restrições coerentes; 4 abordagens distintas",
+      "checked_at": "2026-09-06"
+    }
+  },
+  {
+    "frustration": 2,
+    "aha_factor": 4,
+    "trap": false,
+    "classic": false,
+    "variation": "E se um vizinho te oferecesse **€40.000** — 60% acima do valor de mercado — com a condição de assinares na próxima semana?",
+    "tags": [
+      "decisão",
+      "dinheiro"
+    ],
+    "has_unique_answer": false,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "answer": null,
+    "solution": null,
+    "id": "WWY-002",
+    "category": "what_would_you",
+    "title": "A casa da aldeia",
+    "difficulty": 3,
+    "estimated_time": "5-10",
+    "concept": "Custos afundados",
+    "problem": "Herdaste uma casa numa aldeia a **3 horas** de onde vives.\n\n- Precisa de **€30.000** de obras.\n- Vale **€25.000** no estado actual, e ninguém a compra há dois anos.\n- Custa-te **€1.200/ano** em impostos e manutenção mínima.\n- Era a casa da tua avó. Passaste lá todos os Verões.\n\nO que farias?",
+    "hint_1": "Separa as duas perguntas que estás a misturar: *quanto vale esta casa?* e *quanto vale o que sinto por ela?* Nenhuma das duas se responde com a outra.",
+    "hint_2": "€1.200/ano é o preço da opção de adiar. Não é catastrófico, mas é uma subscrição vitalícia a uma decisão não tomada.",
+    "framing": "**A conta fria:** a casa não é um activo nem um passivo — é uma decisão adiada que cobra mensalidade. Qualquer plano que não tenha data é a estratégia mais cara das quatro.",
+    "approaches": [
+      {
+        "name": "A — Vender ao preço que o mercado dá",
+        "body": "Aceitar €20–25.000, guardar dois ou três objectos da casa e fotografar tudo antes. Elimina a subscrição e liberta capital.\n\n*Quando faz sentido:* se ao fim de dois anos ainda não a usaste, a resposta empírica já foi dada."
+      },
+      {
+        "name": "B — Rendimento mínimo viável",
+        "body": "Fazer só as obras que a tornam habitável (não as que a tornam bonita) e arrendar por temporadas. Objectivo: cobrir os €1.200 e parar a hemorragia, sem investir €30.000.\n\n*Quando faz sentido:* se a aldeia tiver alguma procura sazonal."
+      },
+      {
+        "name": "C — Prazo explícito",
+        "body": "Dar-te **24 meses**: usá-la pelo menos seis vezes nesse período. Se não acontecer, vendes sem discussão. Transforma uma indecisão permanente numa experiência com fim.\n\n*Quando faz sentido:* quando não consegues distinguir se queres a casa ou a memória."
+      },
+      {
+        "name": "D — Partilhar o custo",
+        "body": "Trazer primos ou irmãos para co-proprietários com quota de despesas e calendário de uso.\n\n*Quando faz sentido:* se a ligação afectiva for familiar e não só tua. *Risco:* uma casa com quatro donos e nenhum responsável degrada-se mais depressa."
+      }
+    ],
+    "common_mistake": "Raciocinar a partir dos €30.000 de obras como se fossem obrigatórios. Não são: são o custo de a pôr como estava na tua memória. A pergunta certa é *qual é o menor investimento que resolve o problema real* — e o problema real, quase sempre, é o €1.200/ano e a culpa, não as paredes.\n\nO segundo erro é o **custo afundado**: «já paguei impostos dois anos, agora não vou vender». Esse dinheiro foi-se de qualquer maneira e não deve entrar na decisão.",
+    "verification": {
+      "method": "n/a",
+      "script": null,
+      "result": "restrições coerentes",
+      "checked_at": "2026-09-06"
+    }
+  },
+  {
+    "frustration": 3,
+    "aha_factor": 4,
+    "trap": false,
+    "classic": false,
+    "variation": "Mesmo cenário, mas com **um filho de dois anos**. Quais das quatro estratégias sobrevivem?",
+    "tags": [
+      "carreira",
+      "decisão"
+    ],
+    "has_unique_answer": false,
+    "verified": "VERIFIED",
+    "source": "manual",
+    "volume": 1,
+    "answer": null,
+    "solution": null,
+    "id": "WWY-003",
+    "category": "what_would_you",
+    "title": "Seis meses de folga",
+    "difficulty": 4,
+    "estimated_time": "10-20",
+    "concept": "Risco e sequenciação",
+    "problem": "Tens **seis meses** de despesas poupadas.\n\nOdeias o teu emprego, mas paga bem. Não tens outro à vista, nem uma ideia clara do que queres fazer a seguir. Não tens dependentes.\n\nO que farias?",
+    "hint_1": "Nomeia exactamente o que odeias: o trabalho, o chefe, o sector, ou a ausência de progresso? As quatro respostas dão planos completamente diferentes, e três delas não exigem despedires-te.",
+    "hint_2": "Antes de escolheres: quantos meses de pista tens **mesmo**? Ninguém toma boas decisões com um mês de poupança no banco.",
+    "framing": "Isto parece uma escolha entre ficar e sair. Não é: é uma escolha sobre **por que ordem** fazer as coisas. Quase todas as versões boas deste plano testam antes de saltar.",
+    "approaches": [
+      {
+        "name": "A — Sair já",
+        "body": "Seis meses são um prazo real. Força clareza e elimina a fadiga que te impede de pensar.\n\n*Custo:* procurar emprego sem emprego enfraquece a tua posição negocial, e a ansiedade do mês 4 costuma levar a aceitar exactamente o tipo de trabalho de que fugiste."
+      },
+      {
+        "name": "B — Ficar e comprar tempo",
+        "body": "Manter o salário e comprometer 8 horas por semana com uma alternativa concreta (projecto, portefólio, entrevistas), com data de revisão marcada ao fim de 90 dias.\n\n*Custo:* o esforço a seguir a um dia mau é pequeno, e é fácil enganar-se a si próprio sobre quanto se avançou. *É a opção com melhor rácio risco/aprendizagem, se a data for mesmo cumprida.*"
+      },
+      {
+        "name": "C — Sair, mas com destino",
+        "body": "Ficar até teres uma oferta assinada, e usar os seis meses de poupança apenas como rede.\n\n*Custo:* mais lento, e mantém-te no ambiente que odeias. *É a opção que a maioria das pessoas deve escolher e não escolhe, porque não é dramática.*"
+      },
+      {
+        "name": "D — Mudar o emprego em vez do trabalho",
+        "body": "Pedir mudança de equipa, de função ou de horário antes de sair. É a intervenção mais barata e a menos tentada.\n\n*Custo:* pode não resultar — mas descobrir isso custa uma conversa e duas semanas."
+      }
+    ],
+    "common_mistake": "Tratar isto como uma escolha binária entre «ficar infeliz» e «saltar no vazio». Quase sempre existe uma sequência que reduz o risco: **testar antes de saltar**.\n\nE há um erro de contabilidade frequente: seis meses de despesas não são seis meses de pista — são quatro, porque ninguém quer chegar ao último euro, e as decisões tomadas com um mês de poupança são todas más.",
+    "verification": {
+      "method": "n/a",
+      "script": null,
+      "result": "restrições coerentes",
+      "checked_at": "2026-09-06"
+    }
+  }
+]

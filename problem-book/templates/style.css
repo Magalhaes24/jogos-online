@@ -1,0 +1,188 @@
+/* The Pocket Problem Book — folha única.
+   Regra: definir o mínimo possível. Cada propriedade não definida é
+   uma propriedade que o leitor controla no dispositivo. */
+
+body {
+  font-family: serif;
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0 0.4em;
+  text-align: left;
+  hyphens: none;
+  widows: 2;
+  orphans: 2;
+}
+
+p { margin: 0 0 0.9em 0; }
+
+/* Cada bloco de um problema é uma página física */
+.page {
+  page-break-after: always;
+  break-after: page;
+  page-break-inside: auto;
+}
+.page.last { page-break-after: auto; break-after: auto; }
+
+/* ── Cartão de metadados ───────────────────────────── */
+.meta {
+  text-align: center;
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+  padding: 1.1em 0 0.9em 0;
+  margin: 0 0 1.8em 0;
+}
+.meta .id { font-size: 0.8em; letter-spacing: 0.28em; margin: 0; }
+.meta .title {
+  font-size: 1.45em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0.35em 0 0.3em 0;
+  font-weight: normal;
+}
+.meta .stars { font-size: 1.05em; letter-spacing: 0.18em; margin: 0; }
+.meta .time { font-size: 0.78em; letter-spacing: 0.16em; margin: 0.3em 0 0 0; }
+
+/* ── Barreiras: PENSA PRIMEIRO / STOP ──────────────── */
+.barrier {
+  text-align: center;
+  margin-top: 22%;
+  font-size: 1.5em;
+  line-height: 1.9;
+  letter-spacing: 0.1em;
+}
+.barrier .symbol {
+  font-size: 2.6em;
+  display: block;
+  margin-bottom: 0.35em;
+  letter-spacing: 0;
+}
+.barrier small {
+  display: block;
+  font-size: 0.55em;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  margin-top: 1.2em;
+}
+
+/* ── Dicas ─────────────────────────────────────────── */
+h2.block {
+  font-size: 1.05em;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: normal;
+  border-bottom: 1px solid #000;
+  padding-bottom: 0.4em;
+  margin: 0 0 1.4em 0;
+}
+
+/* ── Resposta: sozinha, grande, centrada ───────────── */
+.answer {
+  text-align: center;
+  margin-top: 18%;
+  font-size: 1.4em;
+  line-height: 1.6;
+}
+.answer .symbol { font-size: 2.2em; display: block; margin-bottom: 0.5em; }
+.answer p { margin: 0; }
+.answer pre { text-align: left; font-size: 0.62em; }
+
+/* ── Cartão final ──────────────────────────────────── */
+.card {
+  border-top: 1px solid #000;
+  margin-top: 2.4em;
+  padding-top: 0.9em;
+  font-size: 0.8em;
+  font-family: monospace;
+  line-height: 1.7;
+}
+.card .row { margin: 0; }
+
+/* ── Tabelas ───────────────────────────────────────── */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 0.88em;
+}
+th, td {
+  border: 1px solid #000;
+  padding: 0.35em 0.4em;
+  text-align: left;
+  vertical-align: top;
+}
+th { font-weight: bold; }
+
+/* ── Código ────────────────────────────────────────── */
+pre {
+  font-family: monospace;
+  font-size: 0.85em;
+  line-height: 1.35;
+  border-left: 3px solid #000;
+  padding: 0.5em 0 0.5em 0.7em;
+  margin: 1em 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+code { font-family: monospace; font-size: 0.9em; }
+pre code { font-size: 1em; }
+
+ul, ol { margin: 0 0 1em 0; padding-left: 1.3em; }
+li { margin-bottom: 0.45em; }
+
+/* ── Navegação ─────────────────────────────────────── */
+.nav { text-align: center; }
+.nav h1 {
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: normal;
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+  padding: 0.7em 0;
+  margin: 0 0 2em 0;
+}
+.nav .group { margin: 0 0 1.8em 0; }
+.nav .group .label {
+  font-size: 0.8em;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 0.7em;
+}
+.nav ul { list-style: none; padding: 0; margin: 0; }
+.nav li { margin: 0.55em 0; font-size: 1.12em; }
+a { text-decoration: none; color: inherit; border-bottom: 1px solid #000; }
+
+/* ── Listas de salto e índices ─────────────────────── */
+.jump { list-style: none; padding: 0; margin: 1.4em 0; }
+.jump li { margin: 0.75em 0; font-size: 0.98em; }
+.jump .sid { font-family: monospace; font-size: 0.85em; }
+.jump .st { letter-spacing: 0.08em; font-size: 0.85em; }
+
+/* ── Divisórias de secção ──────────────────────────── */
+.divider { text-align: center; margin-top: 28%; }
+.divider .symbol { font-size: 3.4em; display: block; margin-bottom: 0.4em; }
+.divider h1 {
+  font-size: 1.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: normal;
+  margin: 0.2em 0;
+}
+.divider .count { font-size: 0.85em; letter-spacing: 0.16em; margin-top: 1em; }
+
+/* ── Capa ──────────────────────────────────────────── */
+.cover { text-align: center; margin-top: 20%; }
+.cover h1 {
+  font-size: 2.1em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: normal;
+  line-height: 1.25;
+  margin: 0;
+}
+.cover .rule { border-top: 3px solid #000; width: 60%; margin: 1.4em auto; }
+.cover .sub { font-size: 0.95em; line-height: 1.8; }
+.cover .vol { font-size: 0.8em; letter-spacing: 0.3em; margin-top: 3em; }
+
+.warn { text-align: center; margin-top: 30%; font-size: 1.25em; line-height: 1.8; }
+.warn .symbol { font-size: 2.6em; display: block; margin-bottom: 0.4em; }
